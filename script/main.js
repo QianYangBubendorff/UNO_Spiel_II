@@ -21,12 +21,11 @@ function Player(name, cards = [], score = -1) {
 
 
 
-let players_global = ["a","b"];
+let players_global = [];
 
 document.getElementById('playerNamesForm').addEventListener('keyup', function(evt) {
     console.log(evt);
 })
-
 
 document.getElementById('playerNamesForm').addEventListener('submit', function(evt){   
  console.log("Spieler hat Button 'Spiel starte' gedrückt!");
@@ -44,17 +43,15 @@ document.getElementById('playerNamesForm').addEventListener('submit', function(e
 
     console.log("Spieler: ", players_global);
 
-    let playerliste_html_ul = document.getElementById("liste_von_player");
+    let player1_1 = document.getElementById("spieler1_1");
+    let player2_2 = document.getElementById("spieler2_2");
+    let player3_3 = document.getElementById("spieler3_3");
+    let player4_4 = document.getElementById("spieler4_4");
 
-    players_global.forEach(ein_player_name => {
-        const li = document.createElement("li");
-        console.log("li: ", li);
-        const span = document.createElement("span");
+for (let index = 1; index < 5; index++)  {
+        const span = document.createElement("span"+index);
         console.log("span: ", span);
-
-        li.appendChild(span);
-        playerliste_html_ul.appendChild(li);
-
-        span.textContent=ein_player_name;
-    });
+        document.getElementById("spieler"+index).appendChild(span);
+        span.textContent=players_global[index-1]; 
+    };
 })

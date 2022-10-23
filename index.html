@@ -9,19 +9,23 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+  <link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
   <title>UNOGame</title>
 </head>
 
+<div id="welcome" class="hopala">
+  <h1>Willkommen</h1>
+</div>
+
+<div id="uno" class="hopala">
+  <h1>4-Jahres-Zeiten UNO</h1>
+</div>
 
 
 <body>
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand h1">UNO ZAM 2022</span>
-    <span class="navbar-text">Das ist der Navbar Text</span>
-  </nav>
 
-  <h1>Uno Game</h1>
+
+
 
 
   <div class="modal fade" id="playerNames" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
@@ -35,28 +39,28 @@
           <div class="modal-body">
             <!-- ------------Player 1------------- -->
             <div class="m-3 row">
-              <input type="text" class="form-control" id="playerName1"
+              <input type="text" class="form-control" id="playerName1" value="Frühling"
                 placeholder="Name für Spieler*in 1 eingeben"></input>
             </div>
             <!-- --------------------------------- -->
 
             <!-- ------------Player 2------------- -->
             <div class="m-3 row">
-              <input type="text" class="form-control" id="playerName2"
+              <input type="text" class="form-control" id="playerName2" value="Sommer"
                 placeholder="Name für Spieler*in 2 eingeben"></input>
             </div>
             <!-- --------------------------------- -->
 
             <!-- ------------Player 3------------- -->
             <div class="m-3 row">
-              <input type="text" class="form-control" id="playerName3"
+              <input type="text" class="form-control" id="playerName3" value="Herbst"
                 placeholder="Name für Spieler*in 3 eingeben"></input>
             </div>
             <!-- --------------------------------- -->
 
             <!-- ------------Player 4------------- -->
             <div class="m-3 row">
-              <input type="text" class="form-control" id="playerName4"
+              <input type="text" class="form-control" id="playerName4" value="Winter"
                 placeholder="Name für Spieler*in 4 eingeben"></input>
             </div>
             <!-- --------------------------------- -->
@@ -69,9 +73,72 @@
     </form>
   </div>
 
-  <h3>Spieler*Innen:</h3>
 
-  <ul id="liste_von_player"></ul>
+  <!-- das habe ich geändert!!!  -->
+
+
+
+  <div class="container overflow-hidden text-center">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="p-3 " id="spieler1">
+          <div class="vogel">
+          <img src="img/vogel.jpg" id="bild">
+        </div>
+        <div class="handkarten1"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3  " id="spieler2">
+          <div class="sonne">
+            <img src="img/sonne.png" id="bild">
+          </div>
+          <div class="handkarten2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row justify-content-evenly">
+    <div class="col-4">
+      Drawpile
+    </div>
+    <div class="col-4">
+      Discardpile
+    </div>
+  </div>
+
+
+  <div class="container overflow-hidden text-center">
+    <div class="row gx-5">
+      <div class="col">
+        <div class="p-3 " id="spieler4">
+          <div class="schnee">
+            <img src="img/schnee.png" id="bild">
+          </div>
+          <div class="handkarten3"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="p-3 " id="spieler3">
+          <div class="blaetter">
+            <img src="img/blaetter.jpg" id="bild">
+          </div>
+          <div class="handkarten4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

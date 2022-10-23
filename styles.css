@@ -1,0 +1,93 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: antiquewhite;
+    background-size: cover;
+}
+
+.navbar{
+    background-color: rgb(216, 191, 93);
+}
+
+
+
+.modal-header{
+    background-color: rgb(216, 191, 93);
+}
+
+
+.modal-body{
+    background-color: rgb(216, 191, 93);
+}
+
+.modal-footer{
+    background-color: rgb(216, 191, 93);
+}
+.form-control{
+    background-color: antiquewhite;
+}
+
+
+.hopala{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: xx-small;
+}
+.hopala{
+    -webkit-animation: tilt-in-fwd-tr 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: tilt-in-fwd-tr 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes tilt-in-fwd-tr {
+    0% {
+      -webkit-transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+              transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+              transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+      opacity: 1;
+    }
+  }
+  @keyframes tilt-in-fwd-tr {
+    0% {
+      -webkit-transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+              transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+              transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+      opacity: 1;
+    }
+  }
+  
+  .p-3 {
+    width: auto;
+    height: 200pt;
+  }
+
+  .col-4{
+    width: 200px;
+    height: 100px;
+  }
+  #spieler1{
+    background-color: rgb(196, 235, 196)!important;
+  }
+  #spieler2{
+    background-color: rgb(245, 219, 170)!important;
+  }
+  #spieler3{
+    background-color: rgb(238, 170, 170)!important;
+  }
+  #spieler4{
+    background-color: rgb(198, 245, 245)!important;
+  }
+  #bild{
+    width: 30%;
+    height: 50%;
+  }
