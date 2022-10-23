@@ -4,7 +4,7 @@ body {
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: rgb(223, 167, 94);
     background-size: cover;
 }
 
@@ -42,6 +42,7 @@ body {
 }
 
 @-webkit-keyframes tilt-in-fwd-tr {
+  
     0% {
       -webkit-transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
               transform: rotateY(20deg) rotateX(35deg) translate(300px, -300px) skew(-35deg, 10deg);
@@ -65,10 +66,21 @@ body {
       opacity: 1;
     }
   }
+
+  #hk{
+    width: 100px;
+    height: 50px;
+  }
   
+  .col{
+    display: flex!important;
+    
+  }
+
   .p-3 {
-    width: auto;
-    height: 200pt;
+    width: 600px;
+    height: 300px;
+    display: inline-block;
   }
 
   .col-4{
@@ -90,4 +102,5 @@ body {
   #bild{
     width: 30%;
     height: 50%;
+    border-radius: 70%;
   }

@@ -13,21 +13,16 @@
   <title>UNOGame</title>
 </head>
 
-<div id="welcome" class="hopala">
-  <h1>Willkommen</h1>
+<div >
+  <div id="welcome" class="hopala">
+    <h1>Willkommen</h1>
+  </div>
+  <div id="uno" class="hopala">
+    <h1>4-Jahres-Zeiten UNO</h1>
+  </div>
 </div>
-
-<div id="uno" class="hopala">
-  <h1>4-Jahres-Zeiten UNO</h1>
-</div>
-
 
 <body>
-
-
-
-
-
   <div class="modal fade" id="playerNames" tabindex="-1" data-bs-keyboard="false" data-bs-backdrop="static">
     <form id="playerNamesForm">
       <!-- TODO: Modaler Dialog DIV hier -->
@@ -76,16 +71,17 @@
 
   <!-- das habe ich geändert!!!  -->
 
-
+  <!-- spieler 1-2 -->
 
   <div class="container overflow-hidden text-center">
     <div class="row gx-5">
       <div class="col">
         <div class="p-3 " id="spieler1">
           <div class="vogel">
-          <img src="img/vogel.jpg" id="bild">
-        </div>
-        <div class="handkarten1"></div>
+            <img src="img/vogel.jpg" id="bild">
+          </div>
+          <div class="handkarten1" id="hk"> HANDKARTEN</div>
+          <div class="score"> PUNKTE</div>
         </div>
       </div>
       <div class="col">
@@ -93,13 +89,15 @@
           <div class="sonne">
             <img src="img/sonne.png" id="bild">
           </div>
-          <div class="handkarten2"></div>
+          <div class="handkarten2" id="hk">HANDKARTEN</div>
+          <div class="score"> PUNKTE</div>
         </div>
       </div>
     </div>
   </div>
 
 
+<!-- drawpile & discardpile -->
   <div class="row justify-content-evenly">
     <div class="col-4">
       Drawpile
@@ -110,22 +108,29 @@
   </div>
 
 
+  <!-- spieler 3 und 4 -->
   <div class="container overflow-hidden text-center">
     <div class="row gx-5">
+
+      
       <div class="col">
+        
         <div class="p-3 " id="spieler4">
           <div class="schnee">
             <img src="img/schnee.png" id="bild">
           </div>
-          <div class="handkarten3"></div>
+          <div class="handkarten3" id="hk">HANDKARTEN</div>
+          <div class="score"> PUNKTE</div>
         </div>
-      </div>
+      </div> 
+
       <div class="col">
         <div class="p-3 " id="spieler3">
           <div class="blaetter">
             <img src="img/blaetter.jpg" id="bild">
           </div>
-          <div class="handkarten4"></div>
+          <div class="handkarten4" id="hk">HANDKARTEN</div>
+          <div class="score"> PUNKTE</div>
         </div>
       </div>
     </div>
