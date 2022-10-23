@@ -1,0 +1,42 @@
+[33mcommit 599c4c0341b72fa099a844a5953489e7328142b3[m[33m ([m[1;36mHEAD -> [m[1;32mKaro[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Merge: c63bc37 d96f58d
+Author: karolinawasalska <karolina1983_4@hotmail.com>
+Date:   Sat Oct 15 10:12:58 2022 +0200
+
+    Merge branch 'main' of https://github.com/micilucic/UNO_Spiel_II into main
+
+[33mcommit c63bc37c035c569e2895874066ad1028461f5458[m
+Author: karolinawasalska <karolina1983_4@hotmail.com>
+Date:   Sat Oct 15 10:12:16 2022 +0200
+
+    Constructor Card+Player
+
+[33mcommit d96f58d3a5c40d4e141633df2668010e02dd2ed1[m
+Author: karo19834 <99655369+karo19834@users.noreply.github.com>
+Date:   Fri Oct 14 17:48:36 2022 +0200
+
+    Create README.md
+
+[33mcommit 1775c1a4739df15777a403ab02ed1c631a4cbbc9[m
+Author: karolinawasalska <karolina1983_4@hotmail.com>
+Date:   Fri Oct 14 17:44:57 2022 +0200
+
+    mod dial
+
+[33mcommit 42c981da141c47826f3ea47cb475b401596c1e00[m
+Author: karolinawasalska <karolina1983_4@hotmail.com>
+Date:   Fri Oct 14 17:41:58 2022 +0200
+
+    modaler dialog
+
+[33mcommit 7cb47a555e97f711431d26aabc5e2afb8eb1f203[m
+Author: micilucic <lucicmili@gmail.com>
+Date:   Fri Oct 14 12:15:13 2022 +0200
+
+    this is just the beginning
+
+[33mcommit 128f59ba7069699df536ad6f92d67a5c00800ce3[m
+Author: Your Name <you@example.com>
+Date:   Fri Oct 14 12:02:34 2022 +0200
+
+    initial commit
