@@ -1,10 +1,10 @@
 # UNO_Spiel_II
 Anforderungen:
-1)     Muss dem*der Spieler*Spielerin die Möglichkeit geben 4 Namen einzugeben
-2)     Keine gleichen/leeren Namen
+1)     Muss dem*der Spieler*Spielerin die Möglichkeit geben 4 Namen einzugeben       v
+2)     Keine gleichen/leeren Namen                                                   v
 3)     Neues Spiel am Server starten
 4)     Alle Karten austeilen (darstellen als Bild)
-5)     Player-Namen anzeigen
+5)     Player-Namen anzeigen                                                         v
 6)     Wenn Karte geklickt wird: versuchen sie abzulegen
 7)     Abgelegte Karten löschen und Top Card ändern
 8)     Abheben funktioniert
@@ -19,7 +19,7 @@ Anforderungen:
 17)  Keine unnötige Anfragen an Server
 18)  Button für neues Spiel
 19)  Ungültige Spielzüge verhindern
-*Bootstrap Struktur anlegen (wo sind Player, wo der Ablagestapel…)
+*Bootstrap Struktur anlegen (wo sind Player, wo der Ablagestapel…)                   v
 *Karten richtig darstellen (Action cards muss man anzeigen)
 *Programmstruktur überlegen
-*Modaler Dialog am Anfang: verhindern dass man zwei gleiche Namen eingeben kann
+*Modaler Dialog am Anfang: verhindern dass man zwei gleiche Namen eingeben kann      v

@@ -1,11 +1,50 @@
+* {
+  margin: 0;
+  padding: 0;
+  
+}
+
+#backgroundImage {
+  background-image: url('img/background.jpg');
+  opacity: 80%;
+}
 body {
     width: 100%;
     height: 100%;
+    font-family: 'Copperplate';
+}
+h1{
+  color: rgb(4, 4, 74);
+  font-size: 75px;
+
 }
 
-body {
-    background-color: rgb(223, 167, 94);
-    background-size: cover;
+.heading-start {
+  position: absolute;
+  text-align:center;
+}
+
+.startpage{
+  display: flex;
+  flex-wrap: wrap;
+}
+#bild-sp{
+  width: 950px;
+  height: 480px;
+  opacity: 70%;
+}
+.sp-button{
+  width: 40%;
+  height: 100px;
+  font-size: xx-large;
+  font-family: 'Copperplate';
+  color: rgb(4, 4, 74);
+  background-color: aliceblue;
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translate(-50%, -35%);
+  z-index:1;
 }
 
 .navbar{
@@ -14,27 +53,13 @@ body {
 
 
 
-.modal-header{
+.modal-content {
     background-color: rgb(216, 191, 93);
-}
-
-
-.modal-body{
-    background-color: rgb(216, 191, 93);
-}
-
-.modal-footer{
-    background-color: rgb(216, 191, 93);
-}
-.form-control{
-    background-color: antiquewhite;
 }
 
 
 .hopala{
     text-align: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: xx-small;
 }
 .hopala{
     -webkit-animation: tilt-in-fwd-tr 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -68,8 +93,8 @@ body {
   }
 
   #hk{
-    width: 100px;
-    height: 50px;
+    width: auto;
+    height: auto;
   }
   
   .col{
@@ -77,30 +102,60 @@ body {
     
   }
 
+  .col-4{
+    background-color:blanchedalmond;
+  }
   .p-3 {
+    border-radius: 5%;
     width: 600px;
     height: 300px;
-    display: inline-block;
+    display: grid;
+   
+    grid-template-rows: 70% 30%;
+
   }
 
   .col-4{
     width: 200px;
     height: 100px;
   }
-  #spieler1{
+  .pl1{
     background-color: rgb(196, 235, 196)!important;
   }
-  #spieler2{
+  .pl2{
     background-color: rgb(245, 219, 170)!important;
   }
-  #spieler3{
+ .pl3{
     background-color: rgb(238, 170, 170)!important;
   }
-  #spieler4{
+  .pl4{
     background-color: rgb(198, 245, 245)!important;
   }
   #bild{
-    width: 30%;
-    height: 50%;
+    width: 40%;
+    height: 90%;
     border-radius: 70%;
+    float: left;
   }
+  #gif{
+    width: 70%;
+    height: 100%;
+    border-radius: 50%;
+  }
+
+.ul-card {
+  display: flex;
+  justify-content: center;
+}
+
+.li-card {
+    list-style: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.margin-top {
+margin-top: 191px;
+}
