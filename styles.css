@@ -34,16 +34,16 @@ h1{
   opacity: 70%;
 }
 .sp-button{
-  width: 40%;
+  width: 20%;
   height: 100px;
   font-size: xx-large;
   font-family: 'Copperplate';
   color: rgb(4, 4, 74);
-  background-color: aliceblue;
+  background-color:  rgb(216, 191, 93);
   position: absolute;
-  top: 50%;
-  right: 15%;
-  transform: translate(-50%, -35%);
+  top: 51%;
+  right: 31%;
+  transform: translate(-49%, -19%);
   z-index:1;
 }
 
