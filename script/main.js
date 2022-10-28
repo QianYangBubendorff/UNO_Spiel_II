@@ -20,8 +20,7 @@ function Player(name, cards = [], score = -1) {
     this.Score = score;
 }
 
-
-
+let gameID = 0;
 let players_global = [];
 
 const hopalaDiv = document.querySelector('.hopala')
@@ -51,7 +50,10 @@ document.getElementById('playerNamesForm').addEventListener('submit', function (
             console.log("span: ", span);
             document.getElementById("spieler" + index).appendChild(span);
             span.textContent = players_global[index - 1];
+
         };
+         startGame();
+       // showPoints();
     } else evt.preventDefault();
 })
 
@@ -78,14 +80,13 @@ function checkDuplicatedAndEmptyNames() {
                     alert('There are duplicated names');
                     duplicateAlerted = true;
                 }
-
                 return false;
             }
-
         }
     }
     return true;
 }
+
 
 // destructure function startGame into smaller functions! 
 // example extract displaying cards for each player logic
@@ -99,7 +100,6 @@ const displayDiscardpile = (data) => {
     const card = `${data.TopCard.Color.charAt(0)}${data.TopCard.Value}`;
     img.src = `${cardseURL}${card}.png`;
 }
-
 
 
 async function startGame() {
@@ -117,33 +117,82 @@ async function startGame() {
 
     if (response.ok) {
 
-        let result = await response.json();
+      let  result = await response.json();
 
-        console.log(result);
+       // console.log(result);
+    
+        gameID = result.Id;
+     //   console.log('Meine GameID: ' + gameID);
 
         console.log(JSON.stringify(result));
         displayDiscardpile(result);
-
-        result.Players.forEach((player, index) => {
-            
-            const hk = document.querySelectorAll('#hk'); 
-            const ul = document.createElement("ul"); // create 
-            ul.classList.add('ul-card');
-            hk[index].appendChild(ul);
-            player.Cards.map(e => {
-                const li = document.createElement("li");
-                const img = document.createElement("img");
-                li.classList.add('li-card')
-                img.classList.add('img-card')
-                li.appendChild(img);
-                ul.appendChild(li);
-                const card = `${e.Color.charAt(0)}${e.Value}`;
-                img.src = `${cardseURL}${card}.png`;
-            });
-        });
+        showCards(result);
+        showPoints(result);
+        await getTopCard();
     } else {
         console.log('HTTP-Error: ' + response.status);
     }
 }
-startGame();
+
+async function getTopCard() {
+    let response = await fetch("http://nowaunoweb.azurewebsites.net/api/Game/TopCard/" + gameID);
+    if (response.ok) {
+
+       let result = await response.json();
+       console.log('-----------------------');
+       console.log(result);
+    }
+}
+
+function showCards(result) {
+    result.Players.forEach((player, index) => {
+
+        const hk = document.querySelectorAll('#hk');
+        const ul = document.createElement("ul"); // create 
+        ul.classList.add('ul-card');
+        hk[index].appendChild(ul);
+        player.Cards.map(e => {
+            const li = document.createElement("li");
+            const img = document.createElement("img");
+            li.classList.add('li-card')
+            img.classList.add('img-card')
+            li.appendChild(img);
+            ul.appendChild(li);
+
+            if (e.Value == 10) { 
+                card = `${e.Color.charAt(0)}${e.Text.charAt(0)}${e.Text.charAt(4)}`;
+                console.log(card)
+            } else if (e.Value == 11 || e.Value == 12) {
+                card = `${e.Color.charAt(0)}${e.Text.charAt(0)}`;
+                console.log(card)
+            } else if (e.Value == 13) {
+                e.Value = "wd4";
+                card = `${e.Value}`;
+                console.log(card)
+            } else if (e.Value == 14) {
+                e.Value = "wild";
+                card = `${e.Value}`;
+                console.log(card)
+            } else {
+                card = `${e.Color.charAt(0)}${e.Value}`;
+                console.log(card)
+            }
+            img.src = `${cardseURL}${card}.png`;
+        });
+    })
+}
+
+function showPoints(result) {
+    result.Players.forEach((player, index) => {
+        let points = 0;
+        let getPLayer = document.getElementById('spieler' + (index+1));
+        const span = document.createElement('span');
+        player.Cards.forEach(c => points+=c.Score);
+        span.textContent = points;
+        getPLayer.appendChild(span);
+        console.log(points);
+    })
+} 
+
+
 

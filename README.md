@@ -2,13 +2,13 @@
 Anforderungen:
 1)     Muss dem*der Spieler*Spielerin die Möglichkeit geben 4 Namen einzugeben       v
 2)     Keine gleichen/leeren Namen                                                   v
-3)     Neues Spiel am Server starten
-4)     Alle Karten austeilen (darstellen als Bild)
+3)     Neues Spiel am Server starten                                                 v
+4)     Alle Karten austeilen (darstellen als Bild)                                   v
 5)     Player-Namen anzeigen                                                         v
 6)     Wenn Karte geklickt wird: versuchen sie abzulegen
 7)     Abgelegte Karten löschen und Top Card ändern
 8)     Abheben funktioniert
-9)     Punkte jedes Players sind sichtbar und ändern sich bei jedem Spielzug
+9)     Punkte jedes Players sind sichtbar und ändern sich bei jedem Spielzug        v
 10)  Aktiven Player darstellen
 11)  Aufgedeckte Karten darstellen
 12)  Abhebestapel darstellen
@@ -20,6 +20,6 @@ Anforderungen:
 18)  Button für neues Spiel
 19)  Ungültige Spielzüge verhindern
 *Bootstrap Struktur anlegen (wo sind Player, wo der Ablagestapel…)                   v
-*Karten richtig darstellen (Action cards muss man anzeigen)
+*Karten richtig darstellen (Action cards muss man anzeigen)                          v
 *Programmstruktur überlegen
 *Modaler Dialog am Anfang: verhindern dass man zwei gleiche Namen eingeben kann      v
