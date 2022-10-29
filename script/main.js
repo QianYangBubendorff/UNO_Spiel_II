@@ -22,6 +22,7 @@ function Player(name, cards = [], score = -1) {
 
 let gameID = 0;
 let players_global = [];
+let currentPlayer = 1;
 
 const hopalaDiv = document.querySelector('.hopala')
 const containerDiv = document.querySelector('.margin-top')
@@ -46,10 +47,10 @@ document.getElementById('playerNamesForm').addEventListener('submit', function (
         myModal.hide();
         console.log("Spieler: ", players_global);
         for (let index = 1; index < 5; index++) {
-            const span = document.createElement("span" + index);
+            const span = document.createElement("span");
             console.log("span: ", span);
             document.getElementById("spieler" + index).appendChild(span);
-            span.textContent = players_global[index - 1];
+            span.textContent = players_global[index - 1] ;
 
         };
          startGame();
@@ -87,62 +88,55 @@ function checkDuplicatedAndEmptyNames() {
     return true;
 }
 
-
-// destructure function startGame into smaller functions! 
-// example extract displaying cards for each player logic
-// fix this post api call -> you push null for player name
-// maybe not use this if response.ok check async/await ;) gl
-
-const displayDiscardpile = (data) => {
+const displayDiscardpile = ({ Value, Color}) => {
     const discardpile = document.querySelector('.discardpile');
     const img = document.createElement('img');
     discardpile.appendChild(img);
-    const card = `${data.TopCard.Color.charAt(0)}${data.TopCard.Value}`;
+    const card = `${Color.charAt(0)}${Value}`;
     img.src = `${cardseURL}${card}.png`;
 }
-
 
 async function startGame() {
     let players = [];
     for (let i = 1; i < 5; i++) {
         players.push(document.getElementById("spieler" + i).value);
     }
-    let response = await fetch("http://nowaunoweb.azurewebsites.net/api/game/start/", {
+
+   try{
+    const response = await fetch("http://nowaunoweb.azurewebsites.net/api/game/start/", {
         method: 'POST',
         body: JSON.stringify(players),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         }
     });
-
-    if (response.ok) {
-
-      let  result = await response.json();
-
-       // console.log(result);
+    const result = await response.json();
+     gameID = result.Id;
+     const topCard = await getTopCard();
+     displayDiscardpile(topCard)
+     showCards(result);
+     showPoints(result);
+     displayCurrentPlayer(currentPlayer);
+   } catch (error) {
+    console.log(error)
+   }
     
-        gameID = result.Id;
-     //   console.log('Meine GameID: ' + gameID);
-
-        console.log(JSON.stringify(result));
-        displayDiscardpile(result);
-        showCards(result);
-        showPoints(result);
-        await getTopCard();
-    } else {
-        console.log('HTTP-Error: ' + response.status);
-    }
 }
 
 async function getTopCard() {
-    let response = await fetch("http://nowaunoweb.azurewebsites.net/api/Game/TopCard/" + gameID);
-    if (response.ok) {
-
-       let result = await response.json();
-       console.log('-----------------------');
-       console.log(result);
+    try {
+        let response = await fetch("http://nowaunoweb.azurewebsites.net/api/Game/TopCard/" + gameID);
+        let result = await response.json();
+        console.log('-----------------------');
+        console.log(result);
+        return result;
+    } catch (error) {
+        console.log(error);
     }
+
 }
+
+
 
 function showCards(result) {
     result.Players.forEach((player, index) => {
@@ -150,32 +144,32 @@ function showCards(result) {
         const hk = document.querySelectorAll('#hk');
         const ul = document.createElement("ul"); // create 
         ul.classList.add('ul-card');
+        // create back cards list for non active players
+        backCardsUl = document.createElement('ul');
+        backCardsUl.classList.add("backCards")
         hk[index].appendChild(ul);
+        hk[index].appendChild(backCardsUl)
         player.Cards.map(e => {
-            const li = document.createElement("li");
+            const button = document.createElement("button");
             const img = document.createElement("img");
-            li.classList.add('li-card')
+            button.classList.add('button-card')
             img.classList.add('img-card')
-            li.appendChild(img);
-            ul.appendChild(li);
+            button.appendChild(img);
+            ul.appendChild(button);
+            
 
             if (e.Value == 10) { 
                 card = `${e.Color.charAt(0)}${e.Text.charAt(0)}${e.Text.charAt(4)}`;
-                console.log(card)
             } else if (e.Value == 11 || e.Value == 12) {
                 card = `${e.Color.charAt(0)}${e.Text.charAt(0)}`;
-                console.log(card)
             } else if (e.Value == 13) {
                 e.Value = "wd4";
                 card = `${e.Value}`;
-                console.log(card)
             } else if (e.Value == 14) {
                 e.Value = "wild";
                 card = `${e.Value}`;
-                console.log(card)
             } else {
                 card = `${e.Color.charAt(0)}${e.Value}`;
-                console.log(card)
             }
             img.src = `${cardseURL}${card}.png`;
         });
@@ -187,12 +181,94 @@ function showPoints(result) {
         let points = 0;
         let getPLayer = document.getElementById('spieler' + (index+1));
         const span = document.createElement('span');
-        player.Cards.forEach(c => points+=c.Score);
-        span.textContent = points;
-        getPLayer.appendChild(span);
-        console.log(points);
+        player.Cards.forEach(c => points+=c.Score );
+        span.textContent = " "+ points + " Punkte";
+        getPLayer.appendChild(span );
     })
 } 
+
+// TODO
+const drawCard = async () => {
+    try{
+        // ???
+        const response = await fetch('https://nowaunoweb.azurewebsites.net/api/game/drawCard/' + gameID, {
+            method: "PUT",
+        })
+        const result = await response.json();
+        console.log(result);           
+    } catch(error) {
+        console.log(error)
+    }
+
+}
+
+
+// this button is temporary! after implementing playing card delete this code below
+// also delete html tag for this button
+// logic inside of add event listener is viable in eventlistener attached to card while playing
+const tempButton = document.querySelector(".temporary-button");
+tempButton.addEventListener('click', () => {
+    let curr = 1;
+    if(currentPlayer < 4) {
+        currentPlayer = currentPlayer + 1;
+        curr = currentPlayer;
+    } else if(currentPlayer === 4) {
+        currentPlayer = 1;
+        curr = currentPlayer;
+    }
+  
+    displayCurrentPlayer(curr);
+
+})
+
+// 2 functions rendering back cards for not active players
+const displayCurrentPlayer = (player) => {
+const cardsUl = document.querySelectorAll('.ul-card');
+const backCardsUl = document.querySelectorAll('.backCards')
+
+    // create temporary array of 4 players
+    const tempPlayersArray = [1, 2, 3, 4];
+    // filter temp array and create new array of not active players
+    const notActivePlayers = tempPlayersArray.filter(p => {
+        return p !== player
+    });
+    cardsUl[player - 1].classList.remove("hidden");
+    backCardsUl[player - 1].classList.add("hidden");
+
+    notActivePlayers.forEach(player => {
+        cardsUl[player - 1].classList.add("hidden")
+        backCardsUl[player - 1].classList.remove("hidden")
+    });
+
+    displayHiddenPlayerCards(notActivePlayers, player, cardsUl);
+    
+};
+
+
+const displayHiddenPlayerCards = (notActivePlayers, player, cardsUl) => {
+    const backCardsUl = document.querySelectorAll('.backCards')
+    notActivePlayers.forEach((player) => {
+        const cardsNum = cardsUl[player - 1].children.length;
+        // if backcards are already generated dont render back cards again
+        // but if open cards number changed eg. player 1 has now 8 not 7 cards
+        // render back cards again accoridingly to 8
+        if(backCardsUl[player - 1].children.length < 1 
+            || backCardsUl[player - 1].children.length !== cardsNum) {
+            for(let i = 1; i <= cardsNum; i++) {
+                const img = document.createElement('img')
+                img.src = `https://nowaunoweb.azurewebsites.net/Content/back.png`;
+                backCardsUl[player - 1].appendChild(img)
+            } 
+        }
+    })
+}
+
+
+
+
+
+
+
 
 
 

@@ -16,7 +16,10 @@ body {
 h1{
   color: rgb(4, 4, 74);
   font-size: 75px;
-
+}
+span {
+  font-size: 40px;
+  color: rgb(4, 4, 74);
 }
 
 .heading-start {
@@ -149,8 +152,18 @@ h1{
   justify-content: center;
 }
 
-.li-card {
-    list-style: none;
+.button-card {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button-card:hover {
+  transition: .3s ease-in;
+  transform: scale(110%);
 }
 
 .hidden {
@@ -163,4 +176,22 @@ margin-top: 191px;
 
 .col {
   padding: 20px;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+}
+
+.swap {
+display: flex;
+flex-wrap: wrap
+}
+
+.swap2 {
+  order:1;
+}
+
+.swap1 {
+  order: 2;
 }

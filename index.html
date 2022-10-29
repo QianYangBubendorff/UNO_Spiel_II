@@ -89,7 +89,7 @@
         <div class="p-3 pl1" >
           <div class="vogel">
             <img src="img/vogel.jpg" id="bild"/>
-            <div class="score" id="spieler1"> PUNKTE</div>
+            <div class="score" id="spieler1"> </div>
           </div>
           
           <div class="handkarten1" id="hk"> </div>
@@ -100,7 +100,7 @@
         <div class="p-3  pl2" >
           <div class="sonne">
             <img src="img/sonne.png" id="bild"/>
-            <div class="score" id="spieler2"> PUNKTE</div>
+            <div class="score"  id="spieler2"> </div>
           </div>
           
           <div class="handkarten2" id="hk"></div>
@@ -116,40 +116,46 @@
       <img src="img/direction.gif" id="gif">
     </div>
     <div class="col-4 drawpile">
-      Drawpile
+      <button class="button-card">
+        Draw Card
+        <img src="https://nowaunoweb.azurewebsites.net/Content/back.png" />
+      </button>
     </div>
     <div class="col-4 discardpile">
       Discardpile
+      <button class="temporary-button">Click</button>
     </div>
   </div>
 
 
   <!-- spieler 3 und 4 -->
-  <div class="container overflow-hidden text-center">
+  <div class="container overflow-hidden text-center swap">
     <div class="row gx-5">
 
       
-      <div class="col">
+      <div class="col swap1">
         
-        <div class="p-3 pl4" >
-          <div class="schnee">
-            <img src="img/schnee.png" id="bild"/>
-            <div class="score" id="spieler4"> PUNKTE</div>
-          </div>
-          
-          <div class="handkarten3" id="hk"></div>
-          
-        </div>
-      </div> 
-
-      <div class="col">
+     
         <div class="p-3 pl3" >
           <div class="blaetter">
             <img src="img/blaetter.jpg" id="bild"/>
-            <div class="score" id="spieler3"> PUNKTE</div>
+            
+            <div class="score" id="spieler3"> </div>
+          </div>
+          
+          <div class="handkarten3" id="hk"></div>
+        </div>
+      </div> 
+
+      <div class="col swap2">
+        <div class="p-3 pl4" >
+          <div class="schnee">
+            <img src="img/schnee.png" id="bild"/>
+            <div class="score" id="spieler4"></div>
           </div>
           
           <div class="handkarten4" id="hk"></div>
+          
         </div>
       </div>
     </div>
