@@ -8,10 +8,10 @@ Anforderungen:
 6)     Wenn Karte geklickt wird: versuchen sie abzulegen
 7)     Abgelegte Karten löschen und Top Card ändern
 8)     Abheben funktioniert
-9)     Punkte jedes Players sind sichtbar und ändern sich bei jedem Spielzug         v
+9)     Punkte jedes Players sind sichtbar und ändern sich bei jedem Spielzug         vx
 10)  Aktiven Player darstellen                                                       v
 11)  Aufgedeckte Karten darstellen                                                   v
-12)  Abhebestapel darstellen
+12)  Abhebestapel darstellen                                                         v
 13)  CSS Animation bei Ablegen der Karte auf Ablegestapel
 14)  Animation bei ungültiger Aktion
 15)  Wenn Spiel aus: Gewinner*in hervorheben

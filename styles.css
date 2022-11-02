@@ -152,7 +152,7 @@ span {
   justify-content: center;
 }
 
-.button-card {
+.button-card, .draw-button {
     background-color: transparent;
     border: none;
     cursor: pointer;
@@ -161,7 +161,7 @@ span {
     align-items: center;
 }
 
-.button-card:hover {
+.button-card:hover, .draw-button:hover {
   transition: .3s ease-in;
   transform: scale(110%);
 }
