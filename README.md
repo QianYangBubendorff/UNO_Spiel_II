@@ -23,3 +23,4 @@ Anforderungen:
 *Karten richtig darstellen (Action cards muss man anzeigen)                          v
 *Programmstruktur überlegen                                                 
 *Modaler Dialog am Anfang: verhindern dass man zwei gleiche Namen eingeben kann      v
+------modaler dialog beim colorchange!!!!!!

@@ -9,18 +9,18 @@ let cardseURL = "http://nowaunoweb.azurewebsites.net/Content/Cards/";
 
 // Constructor Card
 function Card(color, text, value, score) {
-  this.Color = color;
-  this.Text = text;
-  this.Value = value;
-  this.Score = score;
+    this.Color = color;
+    this.Text = text;
+    this.Value = value;
+    this.Score = score;
 }
 
 
 // Constructor Player
 function Player(name, cards = [], score = -1) {
-  this.Name = name;
-  this.Cards = cards;
-  this.Score = score;
+    this.Name = name;
+    this.Cards = cards;
+    this.Score = score;
 }
 
 let gameID = 0;
@@ -80,7 +80,7 @@ function checkDuplicatedAndEmptyNames() {
                     alert('Please choose a name for each player');
                     emptyNameAlerted = true;
                 }
-                return false;
+                continue;
             }
             if (names[i] == names[j]) {
                 if (!duplicateAlerted) {
@@ -218,13 +218,13 @@ console.log(" before");
 console.log(playerUL);
 console.log(playerCardsResult);
 
-const removeChilds = (parent) => {
+const removeChildren = (parent) => {
     while (parent.lastChild) {
         parent.removeChild(parent.lastChild);
     }
 };
-removeChilds(playerUL);
-removeChilds(playerUlBack)
+removeChildren(playerUL);
+removeChildren(playerUlBack)
 console.log(" after");
 console.log(playerUL);
 
@@ -250,7 +250,7 @@ function updatePlayerPoint(playerName, playerCardsResult){
     const playerPointSpan = document.getElementsByClassName(playerName+"Point")[0];
     console.log(playerPointSpan);
     console.log("new points are: "+point);
-    playerPointSpan.textContent = " "+ point + " Punkte";
+    playerPointSpan.textContent = point;
 }
 
 
@@ -261,7 +261,7 @@ function showPoints(result) {
         const span = document.createElement('span');
         span.className = players_global[index]+"Point";
         player.Cards.forEach(c => points+=c.Score );
-        span.textContent = " "+ points + " Punkte";
+        span.textContent = points;
         getPLayer.appendChild(span );
     })
 } 
@@ -278,7 +278,7 @@ const drawCard = async () => {
         });
         if (response.ok) {
         const result = await response.json();
-        const playerCardsUl = document.getElementById(result.Player);
+        const playerCardsUl = document.getElementById(result.Player+"-hk");
         console.log("--------------------------")
         console.log(result);
         console.log(playerCardsUl);
@@ -289,20 +289,28 @@ const drawCard = async () => {
         button.appendChild(img);
         playerCardsUl.appendChild(button);
         img.src = `${cardseURL}${convertCardURL(result.Card)}.png`;
+        img.addEventListener('click', function () {
+        playCard(result.Card);       
+        })
 
         const playerUlBack = document.getElementById(`${result.Player}-back`);
-        const removeChilds = (parent) => {
+        const removeChildren = (parent) => {
             while (parent.lastChild) {
                 parent.removeChild(parent.lastChild);
             }
         };
 
-        removeChilds(playerUlBack);
-
+        removeChildren(playerUlBack);
+        const playerPointSpan = document.getElementsByClassName(result.Player+"Point")[0];
+        let pointString = playerPointSpan.textContent;
+        let point = 0;
+        console.log("points before: "+ pointString);
+        point = parseInt(pointString) + result.Card.Score;
+        console.log("points after: "+ point);
+        playerPointSpan.textContent = point;
+        currentPlayerName = result.NextPlayer;
         displayCurrentPlayer(players_global.findIndex((e) => e === result.NextPlayer)+1);
-        img.addEventListener('click', function () {
-        playCard(result.Card);       
-        })
+
    
         } else console.log("error in drawCard of response in server");
 
@@ -386,16 +394,14 @@ async function playCard(card,wildColor){
         const result = await response.json();
         console.log(result);
         await updatePlayerCards(previousPlayerName);
-        
+        // displayCurrentPlayer(players_global.findIndex((e) => e === previousPlayerName)+1);
         console.log(`current player name: ${result.Player}`);
         currentPlayerName = result.Player;
         displayCurrentPlayer(players_global.findIndex((e) => e === result.Player)+1);
         updateDiscardPile(card);
-        console.log(card.Value);
         if (card.Value == 12) {
-        changeGameDirection();
-      }
-
+            changeGameDirection();
+          }
     } catch(error) {
         console.log(error)
     }
@@ -451,4 +457,3 @@ function changeGameDirection() {
 }
 console.log(gameDirection.src);
 }
-
