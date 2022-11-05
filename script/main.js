@@ -9,18 +9,18 @@ let cardseURL = "http://nowaunoweb.azurewebsites.net/Content/Cards/";
 
 // Constructor Card
 function Card(color, text, value, score) {
-    this.Color = color;
-    this.Text = text;
-    this.Value = value;
-    this.Score = score;
+  this.Color = color;
+  this.Text = text;
+  this.Value = value;
+  this.Score = score;
 }
 
 
 // Constructor Player
 function Player(name, cards = [], score = -1) {
-    this.Name = name;
-    this.Cards = cards;
-    this.Score = score;
+  this.Name = name;
+  this.Cards = cards;
+  this.Score = score;
 }
 
 let gameID = 0;
@@ -80,7 +80,7 @@ function checkDuplicatedAndEmptyNames() {
                     alert('Please choose a name for each player');
                     emptyNameAlerted = true;
                 }
-                continue;
+                return false;
             }
             if (names[i] == names[j]) {
                 if (!duplicateAlerted) {
@@ -278,7 +278,7 @@ const drawCard = async () => {
         });
         if (response.ok) {
         const result = await response.json();
-        const playerCardsUl = document.getElementById(result.Player+"-hk");
+        const playerCardsUl = document.getElementById(result.Player);
         console.log("--------------------------")
         console.log(result);
         console.log(playerCardsUl);
@@ -289,9 +289,6 @@ const drawCard = async () => {
         button.appendChild(img);
         playerCardsUl.appendChild(button);
         img.src = `${cardseURL}${convertCardURL(result.Card)}.png`;
-        img.addEventListener('click', function () {
-        playCard(result.Card);       
-        })
 
         const playerUlBack = document.getElementById(`${result.Player}-back`);
         const removeChilds = (parent) => {
@@ -301,9 +298,11 @@ const drawCard = async () => {
         };
 
         removeChilds(playerUlBack);
-        currentPlayerName = result.NextPlayer;
-        displayCurrentPlayer(players_global.findIndex((e) => e === result.NextPlayer)+1);
 
+        displayCurrentPlayer(players_global.findIndex((e) => e === result.NextPlayer)+1);
+        img.addEventListener('click', function () {
+        playCard(result.Card);       
+        })
    
         } else console.log("error in drawCard of response in server");
 
@@ -387,13 +386,15 @@ async function playCard(card,wildColor){
         const result = await response.json();
         console.log(result);
         await updatePlayerCards(previousPlayerName);
-        // displayCurrentPlayer(players_global.findIndex((e) => e === previousPlayerName)+1);
+        
         console.log(`current player name: ${result.Player}`);
         currentPlayerName = result.Player;
         displayCurrentPlayer(players_global.findIndex((e) => e === result.Player)+1);
         updateDiscardPile(card);
-        changeGameDirection(card);
-    
+        console.log(card.Value);
+        if (card.Value == 12) {
+        changeGameDirection();
+      }
 
     } catch(error) {
         console.log(error)
@@ -434,9 +435,20 @@ async function validSelectedCard(card){
 }
 
 
-function changeGameDirection(card) {
-    const gameDirection = document.getElementById("gif");
-    if(card.Value ==12) gameDirection.src="img/direction_reverse.gif";
-    else gameDirection.src="img/direction.gif";
+function changeGameDirection() {
+    const gameDirection_gif = document.getElementById("gif");
+
+    if(gameDirection == 1) {
+      gameDirection_gif.src = "img/direction_reverse.gif";
+      console.log('direction is reversed');
+      console.log(gameDirection.src);
+      gameDirection = -1;
+    } else {
+      gameDirection_gif.src="img/direction.gif";
+      console.log(gameDirection.src);
+      console.log('direction is normal');
+      gameDirection = 1;
+}
+console.log(gameDirection.src);
 }
 
